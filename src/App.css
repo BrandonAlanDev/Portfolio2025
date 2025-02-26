@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@keyframes slide {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-20%);
+    }
+  }
+  .animate-infinite-slide {
+    animation: slide 10s linear infinite;
+    transform: translateX(0%);
+  }
+
+  img{
+    transition: all;
+    transition-duration: 0.3s;
+  }
+  img:hover{
+    filter: drop-shadow(4px 4px 10px rgba(255, 255, 255, 1));
+  }
