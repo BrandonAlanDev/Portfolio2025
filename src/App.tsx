@@ -150,7 +150,7 @@ const App = () => {
         <div className='flex flex-col lg:flex-row justify-between p-4 gap-5 items-center'>
           <p className="text-white text-lg leading-relaxed flex-col text-left">
             <div>👋 ¡Hola! Soy Brandon Alan Carabajal, un desarrollador de software apasionado por la tecnología y la innovación.</div>
-            <div>Tengo 24 Años y soy de Mar del Plata - Argentina 🌊</div>
+            <div>Tengo 25 Años y soy de Mar del Plata - Argentina 🌊</div>
             <div>Desde 2021 me he dedicado a crear soluciones digitales utilizando múltiples herramientas y lenguajes de programación.</div>
             <div>En 2022 inicié la carrera de Analista de Sistemas en el Instituto Argentino de la Empresa (HILET), y me gradué en diciembre de 2024.</div>
             <br />
