@@ -29,7 +29,7 @@ const Section = ({ id, title, children, dark }: { id: string, title: string, chi
         transition={{ duration: 1 }}
         className="max-w-4xl mx-auto"
       >
-        <h2 className={`text-4xl md:text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r ${(!dark)? 'from-gray-900 to-gray-500':'from-gray-200 to-gray-500'}`}>
+        <h2 className={`text-4xl md:text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r ${(!dark)? 'from-gray-900 to-gray-800':'from-gray-200 to-gray-500'}`}>
           {title}
         </h2>
       </motion.div>
@@ -148,18 +148,18 @@ const App = () => {
 
       <Section id="about" title="Sobre mí" dark={true}>
         <div className='flex flex-col lg:flex-row justify-between p-4 gap-5 items-center'>
-          <p className="text-white text-lg leading-relaxed flex-col text-left">
+          <p className="text-gray-200 text-xl font-bold shadow-white leading-relaxed flex-col text-left">
             <div>👋 ¡Hola! Soy Brandon Alan Carabajal, un desarrollador de software apasionado por la tecnología y la innovación.</div>
             <div>Tengo 25 Años y soy de Mar del Plata - Argentina 🌊</div>
             <div>Desde 2021 me he dedicado a crear soluciones digitales utilizando múltiples herramientas y lenguajes de programación.</div>
             <div>En 2022 inicié la carrera de Analista de Sistemas en el Instituto Argentino de la Empresa (HILET), y me gradué en diciembre de 2024.</div>
-            <br />
-            <div>💡 ¿Qué me define?</div>
+            <div className='my-4' />
+            <div className='text-2xl mb-2'>💡 ¿Qué me define?</div>
             <div>✔️ Experiencia Full Stack: Desarrollo aplicaciones con .NET, React y SQL.</div>
             <div>✔️ Lenguajes principales: C#, JavaScript y Java.</div>
             <div>✔️ Trabajo en equipo: Uso metodologías ágiles como SCRUM, Git y herramientas de gestión como Trello.</div>
             <div>✔️ Mentalidad de aprendizaje continuo: Siempre en busca de nuevos desafíos y oportunidades para mejorar mis habilidades.</div>
-            <br />
+            <div className='my-4' />
             <div>🚀 Mi objetivo es formar parte de equipos de desarrollo dinámicos, contribuir con soluciones eficientes y seguir creciendo profesionalmente en el mundo del software.</div>
           </p>
           <div>
@@ -168,23 +168,82 @@ const App = () => {
         </div>
       </Section>
 
+      <ParticlesBackground />
       <Section id="projects" title="Proyectos" dark={false}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex flex-col w-[90vw] items-center gap-8">
           {[1, 2, 3, 4].map((item) => (
             <motion.div 
               key={item}
               whileHover={{ scale: 1.05 }}
-              className="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow border-2 hover:border-amber-400 hover:bg-black hover:text-white"
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
-              <h3 className="text-xl font-bold mb-4">Proyecto {item}</h3>
-              <p >Descripción del proyecto...</p>
+              <div className='flex flex-col md:flex-row items-center gap-8'>
+                <img src={Java} className='w-[200px] h-[200px] '/>
+                <div className='items-center w-full'>
+                  <h3 className="text-xl font-bold mb-4">Proyecto {item}</h3>
+                  <p >Descripción del proyecto...</p>
+                  <hr className='my-2' />
+                  <div className="flex w-full items-end justify-end"><button className='border-white border-2 p-2 rounded-full cursor-pointer'>Github code</button></div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
       </Section>
 
       <Section id="contact" title="Contacto" dark={true}>
-        <></>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 mb-4 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              <div className='flex flex-col md:flex-row items-center gap-8  font-bold '>
+                <img src={Image} className='w-[200px] h-[200px]  rounded-2xl'/>
+                <div className='flex-col items-center w-full'>
+                  <h2 className='text-2xl mb-4'>Contacto directo</h2>
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-2">E-Mail</h3>
+                    <div className='flex flex-row w-full justify-between items-center'>
+                      <p >Brandoncarabajal@gmail.com</p>
+                      <button className='border-white border-2 p-2 rounded-full cursor-pointer'>Copiar</button>
+                    </div>
+                    <hr className='my-2' />
+                    <h3 className="text-xl font-bold mb-2">Teléfono</h3>
+                    <div className='flex flex-row w-full justify-between items-center'>
+                      <p >+542236686159 </p>
+                      <button className='border-white border-2 p-2 rounded-full cursor-pointer'>Copiar</button>
+                    </div>
+                    <hr className='my-2' />
+                  </div>
+                </div>
+              </div>
+          </motion.div>
+          <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              <div className='flex flex-col items-center gap-8  font-bold '>
+                <h2 className='text-2xl mb-4'>Redes</h2>
+                <div className='flex flex-col md:flex-row items-center gap-8  font-bold '>
+                <img src={Image} className='w-[200px] h-[200px]  rounded-2xl'/>
+                <div className='flex-col items-center w-full'>
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-2">E-Mail</h3>
+                    <div className='flex flex-row w-full justify-between items-center'>
+                      <p >Brandoncarabajal@gmail.com</p>
+                      <button className='border-white border-2 p-2 rounded-full cursor-pointer'>Copiar</button>
+                    </div>
+                    <hr className='my-2' />
+                    <h3 className="text-xl font-bold mb-2">Teléfono</h3>
+                    <div className='flex flex-row w-full justify-between items-center'>
+                      <p >+542236686159 </p>
+                      <button className='border-white border-2 p-2 rounded-full cursor-pointer'>Copiar</button>
+                    </div>
+                    <hr className='my-2' />
+                  </div>
+                </div>
+                </div>
+              </div>
+          </motion.div>
       </Section>
     </div>
   )

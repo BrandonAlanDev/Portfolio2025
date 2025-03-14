@@ -42,7 +42,7 @@ const Navbar = ({ activeSection, setActiveSection }: { activeSection: string, se
   }, [])
 
   return (
-    <nav className="fixed w-full z-50 bg-linear-to-br from-black to-gray-800 text-white backdrop-blur-sm">
+    <nav className="fixed w-full z-50 bg-linear-to-br from-black to-gray-800 text-white backdrop-blur-sm font-bold">
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <motion.div
