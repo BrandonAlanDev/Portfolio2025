@@ -16,6 +16,9 @@ import React from './assets/img/logos/react.png'
 import DotNet from './assets/img/logos/dotnet.png'
 import CVEs from './assets/pdf/Brandon-CV-Español-2025.pdf'
 import CVEn from './assets/pdf/BrandonCV-English-2025.pdf'
+import Avatar from '@mui/material/Avatar'
+import {GitHub,LinkedIn} from '@mui/icons-material'
+import ProyectIMG1 from './assets/img/projects/Proyect1.png'
 
 const Section = ({ id, title, children, dark }: { id: string, title: string, children: React.ReactNode, dark: boolean }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -82,6 +85,11 @@ const logos = [
   MsSql,
   MySql,
 ];
+const Copy = (texto : any) => {
+  navigator.clipboard.writeText(texto)
+    .then(() => alert("Texto copiado al portapapeles"))
+    .catch((err) => console.error("Error al copiar el texto: ", err));
+};
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('home')
@@ -124,10 +132,10 @@ const App = () => {
               transition={{ delay: 1.5, duration: 1 }}
               className="text-xl text-white mt-4 flex flex-row justify-center gap-5"
               >
-              <a href={CVEs} target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full ' >CV Español</a>
-              <a href={CVEn} target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full ' >CV Ingles</a>
-              <a href='https://github.com/BrandonAlanDev' target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full '>GitHub</a>
-              <a href='https://www.linkedin.com/in/brandon-alan-carabajal-97b294223/' target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full '>LinkedIn</a>
+              <a href={CVEs} target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full ' >CV 🇪🇸</a>
+              <a href={CVEn} target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full ' >CV 🇺🇸</a>
+              <a href='https://github.com/BrandonAlanDev' target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full '><GitHub/></a>
+              <a href='https://www.linkedin.com/in/brandon-alan-carabajal-97b294223/' target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full '><LinkedIn/></a>
             </motion.p>
           </div>
           <img src={Image} alt="Brandon Carabajal" className='h-[50vh] z-10 rounded-2xl shadow-md shadow-white'/>
@@ -171,23 +179,65 @@ const App = () => {
       <ParticlesBackground />
       <Section id="projects" title="Proyectos" dark={false}>
         <div className="flex flex-col w-[90vw] items-center gap-8">
-          {[1, 2, 3, 4].map((item) => (
             <motion.div 
-              key={item}
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              <div className='flex flex-col md:flex-row items-center gap-8'>
+                <img src={ProyectIMG1} className='w-[200px] '/>
+                <div className='items-center w-full'>
+                  <h3 className="text-xl font-bold mb-4">Finales Hilet </h3>
+                  <div className='flex flex-col'>
+                    <p><strong>Rol: </strong>Desarrollador Front-End Junior</p>
+                    <p><strong>Metodología: </strong>SCRUM (Enero 2024 - Junio 2024)</p>
+                    <p><strong>Tecnologías: </strong>React, JavaScript, Fetch, API Rest, SQL, Dapper, ASP.NET, GIT, TRELLO.</p>
+                    <p><strong>Descripción: </strong>
+                    Desarrollé la interfaz de usuario para una aplicación web que permite a los estudiantes inscribirse en los exámenes finales.
+                    Colaboré estrechamente con el equipo de back-end para integrar las API REST y asegurar una experiencia de usuario fluida.
+                    Utilicé React para crear componentes reutilizables y gestioné el estado de la aplicación para garantizar la coherencia y eficiencia.
+                    Participé en reuniones SCRUM diarias y en la planificación de sprints para coordinar el progreso del proyecto.</p>
+                  </div>
+                  <hr className='my-2' />
+                  <div className="flex w-full items-end justify-between">
+                    <div className='flex flex-row gap-5'>
+                      <Avatar alt="JS logo" src={Javascript} />
+                      <Avatar alt="React logo" src={React} />
+                      <Avatar alt="C Sharp logo" src={CSharp} />
+                      <Avatar alt=".NET logo" src={DotNet} />
+                      <Avatar alt="SQL Server logo" src={MsSql} />
+                    </div>
+                    <button className='border-white border-2 p-2 rounded-full cursor-pointer'><GitHub/> code</button></div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div 
               whileHover={{ scale: 1.05 }}
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
               <div className='flex flex-col md:flex-row items-center gap-8'>
                 <img src={Java} className='w-[200px] h-[200px] '/>
                 <div className='items-center w-full'>
-                  <h3 className="text-xl font-bold mb-4">Proyecto {item}</h3>
-                  <p >Descripción del proyecto...</p>
+                  <h3 className="text-xl font-bold mb-4">Sistema de gestion : Finca Sagrado Corazon</h3>
+                  <div className='flex flex-col'>
+                    <p><strong>Rol: </strong>Desarrollo Independiente privado (Febrero 2023 - Julio 2023)</p>
+                    <p><strong>Metodología: </strong>Cascada</p>
+                    <p><strong>Tecnologías: </strong> WPF, C# .NET, Microsoft SQL Server.</p>
+                    <p><strong>Descripción: </strong>
+                    Diseñé y desarrollé una aplicación de escritorio para gestionar las operaciones de un taller de arte, incluyendo la gestión de alumnos, cursos y materiales.
+                    Implementé funcionalidades de Alta, Baja, Modificación y Listado (ABML) utilizando WPF para la interfaz de usuario y Microsoft SQL Server para la base de datos.
+                    El proyecto abarcó desde el diseño de la base de datos hasta la implementación y pruebas de la aplicación.</p>
+                  </div>
                   <hr className='my-2' />
-                  <div className="flex w-full items-end justify-end"><button className='border-white border-2 p-2 rounded-full cursor-pointer'>Github code</button></div>
+                  <div className="flex w-full items-end justify-between">
+                    <div className='flex flex-row gap-5'>
+                      <Avatar alt="C Sharp logo" src={CSharp} />
+                      <Avatar alt=".NET logo" src={DotNet} />
+                      <Avatar alt="SQL Server logo" src={MsSql} />
+                    </div>
+                    <button className='border-white border-2 p-2 rounded-full cursor-pointer'><GitHub/> code</button></div>
                 </div>
               </div>
             </motion.div>
-          ))}
         </div>
       </Section>
 
@@ -204,13 +254,13 @@ const App = () => {
                     <h3 className="text-xl font-bold mb-2">E-Mail</h3>
                     <div className='flex flex-row w-full justify-between items-center'>
                       <p >Brandoncarabajal@gmail.com</p>
-                      <button className='border-white border-2 p-2 rounded-full cursor-pointer'>Copiar</button>
+                      <button className='border-white border-2 p-2 rounded-full cursor-pointer' onClick={()=>{Copy('Brandoncarabajal@gmail.com');}}>Copiar</button>
                     </div>
                     <hr className='my-2' />
                     <h3 className="text-xl font-bold mb-2">Teléfono</h3>
                     <div className='flex flex-row w-full justify-between items-center'>
                       <p >+542236686159 </p>
-                      <button className='border-white border-2 p-2 rounded-full cursor-pointer'>Copiar</button>
+                      <button className='border-white border-2 p-2 rounded-full cursor-pointer' onClick={()=>{Copy('+542236686159');}}>Copiar</button>
                     </div>
                     <hr className='my-2' />
                   </div>
@@ -224,23 +274,14 @@ const App = () => {
               <div className='flex flex-col items-center gap-8  font-bold '>
                 <h2 className='text-2xl mb-4'>Redes</h2>
                 <div className='flex flex-col md:flex-row items-center gap-8  font-bold '>
-                <img src={Image} className='w-[200px] h-[200px]  rounded-2xl'/>
-                <div className='flex-col items-center w-full'>
-                  <div className='items-center w-full'>
-                    <h3 className="text-xl font-bold mb-2">E-Mail</h3>
-                    <div className='flex flex-row w-full justify-between items-center'>
-                      <p >Brandoncarabajal@gmail.com</p>
-                      <button className='border-white border-2 p-2 rounded-full cursor-pointer'>Copiar</button>
-                    </div>
-                    <hr className='my-2' />
-                    <h3 className="text-xl font-bold mb-2">Teléfono</h3>
-                    <div className='flex flex-row w-full justify-between items-center'>
-                      <p >+542236686159 </p>
-                      <button className='border-white border-2 p-2 rounded-full cursor-pointer'>Copiar</button>
-                    </div>
-                    <hr className='my-2' />
-                  </div>
-                </div>
+                  <a href='https://www.linkedin.com/in/brandon-alan-carabajal-97b294223/' target='blank_' className='flex-col items-center justify-center text-center w-full p-4 border-2 border-white rounded-xl hover:bg-gradient-to-tr hover:from-gray-400 hover:to-gray-900 transition-all duration-200 hover:cursor-pointer'>
+                    <p><LinkedIn sx={{ fontSize: '200px' }} /></p>
+                    <p>Brandon Alan Carabajal</p>
+                  </a>
+                  <a href='https://github.com/BrandonAlanDev' target='blank_' className='flex-col items-center justify-center text-center w-full p-4 border-2 border-white rounded-xl hover:bg-gradient-to-tr hover:from-gray-400 hover:to-gray-900 transition-all duration-200 hover:cursor-pointer'>
+                    <p><GitHub sx={{ fontSize: '200px' }} /></p>
+                    <p>BrandonAlanDev</p>
+                  </a>
                 </div>
               </div>
           </motion.div>
