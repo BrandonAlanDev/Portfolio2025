@@ -1,9 +1,12 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Torus, PerspectiveCamera } from '@react-three/drei'
+import { OrbitControls} from '@react-three/drei'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { useLoader} from '@react-three/fiber'
+import { Suspense } from 'react'
 import ParticlesBackground from './components/ParticlesBackground'
 import Navbar from './components/Navbar'
 import Image from './assets/img/Brandon-BN.png'
@@ -19,6 +22,7 @@ import CVEn from './assets/pdf/BrandonCV-English-2025.pdf'
 import Avatar from '@mui/material/Avatar'
 import {GitHub,LinkedIn} from '@mui/icons-material'
 import ProyectIMG1 from './assets/img/projects/Proyect1.png'
+import * as THREE from 'three'
 
 const Section = ({ id, title, children, dark }: { id: string, title: string, children: React.ReactNode, dark: boolean }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -49,31 +53,87 @@ const Section = ({ id, title, children, dark }: { id: string, title: string, chi
   )
 }
 
-const ThreeTorus = ({estilo=""}) => (
-  <Canvas className={`absolute w-full h-full select-none ${estilo} `}>
-    <ambientLight intensity={4} />
-    <pointLight position={[1, 1, 1]} intensity={1} />
-    <PerspectiveCamera
-      position={[0, 0, 15]}
-      fov={50}
-      makeDefault
+interface ModelProps {
+  srcModel: string
+  position?: [number, number, number]
+  rotation?: [number, number, number]
+}
+
+interface ThreeTorusProps {
+  estilo?: string
+  srcModel?: string
+}
+
+const Model = ({ srcModel }: ModelProps) => {
+  const gltf = useLoader(GLTFLoader, srcModel)
+  
+  const bbox = new THREE.Box3().setFromObject(gltf.scene)
+  const size = bbox.getSize(new THREE.Vector3())
+  
+  return (
+    <primitive 
+      object={gltf.scene} 
+      scale={[10,10,10]}
+      position={[0, -size.y+(size.y), 0]} // Centrado vertical
+      rotation={[0, Math.PI, 0]}
     />
-    <Torus args={[3, 1, 15, 50]} rotation={[Math.PI / 1, 0, 0]} position={[1, 1, 1]}>
-      <meshStandardMaterial 
-        color="#ffc400" 
-        metalness={0.8} 
-        roughness={0.2}
-        emissive="#000000"
+  )
+}
+
+const ThreeTorus = ({ estilo = "", srcModel }: ThreeTorusProps) => (
+  <div 
+    className={`relative ${estilo}`}
+    style={{
+      minWidth: 250,
+      minHeight: 250,
+      width: '100%',
+      height: '100%',
+      overflow: 'hidden'
+    }}
+  >
+    <Canvas
+      style={{
+        width: '100%',
+        height: '100%',
+        minHeight: 250,
+        minWidth: 250,
+        touchAction: 'none'
+      }}
+      gl={{ antialias: true }}
+      camera={{
+        position: [0, 0, 15],
+        fov: 45,
+        near: 0.1,
+        far: 1000
+      }}
+    >
+      <ambientLight intensity={4} />
+      <pointLight position={[5, 5, 5]} intensity={1} />
+      
+      <Suspense fallback={null}>
+        {srcModel ? (
+          <Model srcModel={srcModel} />
+        ) : (
+          <mesh scale={[1.5, 1.5, 1.5]}>
+            <torusGeometry args={[3, 1, 16, 100]} />
+            <meshStandardMaterial 
+              color="#ffc400"
+              metalness={0.8}
+              roughness={0.2}
+            />
+          </mesh>
+        )}
+      </Suspense>
+
+      <OrbitControls
+        enableZoom={false}
+        autoRotate
+        autoRotateSpeed={2}
+        minDistance={10}
+        maxDistance={20}
       />
-    </Torus>
-    <OrbitControls 
-      enableZoom={false} 
-      enablePan={false}
-      enableRotate={false}
-      autoRotate 
-      autoRotateSpeed={5}
-    />
-  </Canvas>
+    </Canvas>
+  </div>
 )
 
 const logos = [
@@ -93,6 +153,12 @@ const Copy = (texto : any) => {
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('home')
+  useEffect(() => {
+    const canvases = document.querySelectorAll("canvas");
+    canvases.forEach(canvas => {
+      canvas.style.minHeight = "250px";
+    });
+  }, []);
 
   return (
     <div className="bg-white text-black">
@@ -108,6 +174,7 @@ const App = () => {
               transition={{ duration: 1.5 }}
               className="text-6xl md:text-8xl font-bold mt-4 mb-4 text-white"
             >
+              <ThreeTorus srcModel='public/models/BuhoBlancoTJS.glb'/>
               Brandon Alan Carabajal
             </motion.h1>
             <motion.p 
@@ -137,17 +204,16 @@ const App = () => {
               <a href='https://github.com/BrandonAlanDev' target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full '><GitHub/></a>
               <a href='https://www.linkedin.com/in/brandon-alan-carabajal-97b294223/' target='_blank' className='bg-transparent border-2 border-white transition-all hover:shadow-md hover:shadow-white hover:cursor-pointer hover:bg-white hover:text-gray-900 px-2 py-1 rounded-full '><LinkedIn/></a>
             </motion.p>
-          </div>
-          <img src={Image} alt="Brandon Carabajal" className='h-[50vh] z-10 rounded-2xl shadow-md shadow-white'/>
+            </div>
         </div>
         <div className="relative inset-0 flex items-center justify-center w-full h-[8vh] overflow-hidden bg-gradient-to-tr from-gray-400 to-transparent rounded-2xl px-4">
           <div className="absolute flex animate-infinite-slide gap-8 whitespace-nowrap">
           {[...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
             <img
-              key={index}
-              src={logo}
-              alt="Logo"
-              className="h-[6vh] max-w-[120px] flex-shrink-0"
+            key={index}
+            src={logo}
+            alt="Logo"
+            className="h-[6vh] max-w-[120px] flex-shrink-0"
             />
           ))}
         </div>
@@ -171,7 +237,7 @@ const App = () => {
             <div>🚀 Mi objetivo es formar parte de equipos de desarrollo dinámicos, contribuir con soluciones eficientes y seguir creciendo profesionalmente en el mundo del software.</div>
           </p>
           <div>
-          <ThreeTorus />
+          <img src={Image} alt="Brandon Carabajal" className='h-[50vh] z-10 rounded-2xl shadow-md shadow-white'/>
           </div>
         </div>
       </Section>
@@ -189,7 +255,7 @@ const App = () => {
                   <h3 className="text-xl font-bold mb-4">Finales Hilet </h3>
                   <div className='flex flex-col'>
                     <p><strong>Rol: </strong>Desarrollador Front-End Junior</p>
-                    <p><strong>Metodología: </strong>SCRUM (Enero 2024 - Junio 2024)</p>
+                    <p><strong>Metodología: </strong>SCRUM (Enero 2024 - Diciembre 2024)</p>
                     <p><strong>Tecnologías: </strong>React, JavaScript, Fetch, API Rest, SQL, Dapper, ASP.NET, GIT, TRELLO.</p>
                     <p><strong>Descripción: </strong>
                     Desarrollé la interfaz de usuario para una aplicación web que permite a los estudiantes inscribirse en los exámenes finales.
@@ -206,7 +272,7 @@ const App = () => {
                       <Avatar alt=".NET logo" src={DotNet} />
                       <Avatar alt="SQL Server logo" src={MsSql} />
                     </div>
-                    <button className='border-white border-2 p-2 rounded-full cursor-pointer'><GitHub/> code</button></div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -234,7 +300,7 @@ const App = () => {
                       <Avatar alt=".NET logo" src={DotNet} />
                       <Avatar alt="SQL Server logo" src={MsSql} />
                     </div>
-                    <button className='border-white border-2 p-2 rounded-full cursor-pointer'><GitHub/> code</button></div>
+                  </div>
                 </div>
               </div>
             </motion.div>
