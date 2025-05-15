@@ -174,7 +174,7 @@ const App = () => {
               transition={{ duration: 1.5 }}
               className="text-6xl md:text-8xl font-bold mt-4 mb-4 text-white"
             >
-              <ThreeTorus srcModel='public/models/BuhoBlancoTJS.glb'/>
+              <ThreeTorus srcModel='./models/BuhoBlancoTJS.glb'/>
               Brandon Alan Carabajal
             </motion.h1>
             <motion.p 
