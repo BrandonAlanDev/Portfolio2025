@@ -9,7 +9,7 @@ import { useLoader} from '@react-three/fiber'
 import { Suspense } from 'react'
 import ParticlesBackground from './components/ParticlesBackground'
 import Navbar from './components/Navbar'
-import Image from './assets/img/Brandon-BN.png'
+import Image from './assets/img/Brandon.jpg'
 import CSharp from './assets/img/logos/csharp.png'
 import Javascript from './assets/img/logos/javascript.png'
 import Java from './assets/img/logos/java.png'
@@ -22,6 +22,9 @@ import CVEn from './assets/pdf/BrandonCV-English-2025.pdf'
 import Avatar from '@mui/material/Avatar'
 import {GitHub,LinkedIn} from '@mui/icons-material'
 import ProyectIMG1 from './assets/img/projects/Proyect1.png'
+import ProyectIMG2 from './assets/img/projects/Proyect2.png'
+import ProyectIMG3 from './assets/img/projects/Proyect3.png'
+import ProyectIMG4 from './assets/img/projects/Proyect4.png'
 import * as THREE from 'three'
 
 const Section = ({ id, title, children, dark }: { id: string, title: string, children: React.ReactNode, dark: boolean }) => {
@@ -237,7 +240,7 @@ const App = () => {
             <div>🚀 Mi objetivo es formar parte de equipos de desarrollo dinámicos, contribuir con soluciones eficientes y seguir creciendo profesionalmente en el mundo del software.</div>
           </p>
           <div>
-          <img src={Image} alt="Brandon Carabajal" className='h-[50vh] z-10 rounded-2xl shadow-md shadow-white'/>
+          <img src={Image} alt="Brandon Carabajal" className='h-[40vh] z-10 rounded-2xl shadow-md shadow-white'/>
           </div>
         </div>
       </Section>
@@ -281,11 +284,11 @@ const App = () => {
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
               <div className='flex flex-col md:flex-row items-center gap-8'>
-                <img src={Java} className='w-[200px] h-[200px] '/>
+                <img src={ProyectIMG2} className='w-[200px] h-[200px] '/>
                 <div className='items-center w-full'>
                   <h3 className="text-xl font-bold mb-4">Sistema de gestion : Finca Sagrado Corazon</h3>
                   <div className='flex flex-col'>
-                    <p><strong>Rol: </strong>Desarrollo Independiente privado (Febrero 2023 - Julio 2023)</p>
+                    <p><strong>Rol: </strong>Desarrollo Independiente por encargo (Febrero 2023 - Julio 2023)</p>
                     <p><strong>Metodología: </strong>Cascada</p>
                     <p><strong>Tecnologías: </strong> WPF, C# .NET, Microsoft SQL Server.</p>
                     <p><strong>Descripción: </strong>
@@ -299,6 +302,55 @@ const App = () => {
                       <Avatar alt="C Sharp logo" src={CSharp} />
                       <Avatar alt=".NET logo" src={DotNet} />
                       <Avatar alt="SQL Server logo" src={MsSql} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              <div className='flex flex-col md:flex-row items-center gap-8'>
+                <img src={ProyectIMG3} className='w-[200px] h-[200px] '/>
+                <div className='items-center w-full'>
+                  <h3 className="text-xl font-bold mb-4">Drag & Drop Tier list Maker de libros</h3>
+                  <div className='flex flex-col'>
+                    <p><strong>Rol: </strong>Desarrollo Independiente privado (Febrero 2025)</p>
+                    <p><strong>Metodología: </strong>Cascada</p>
+                    <p><strong>Tecnologías: </strong> JavaScript, TailwindCSS, HTML, CSS.</p>
+                    <p><strong>Descripción: </strong>
+                    Diseñe y desarrolle una aplicacion drag and drop para crear Tier list completamente editable y con posibilidad de descargar el resultado.</p>
+                  </div>
+                  <hr className='my-2' />
+                  <div className="flex w-full items-end justify-between">
+                    <div className='flex flex-row gap-5'>
+                      <Avatar alt="JavaScript logo" src={Javascript} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              <div className='flex flex-col md:flex-row items-center gap-8'>
+                <img src={ProyectIMG4} className='w-[200px] h-[200px] '/>
+                <div className='items-center w-full'>
+                  <h3 className="text-xl font-bold mb-4">Girar Ruleta (WEB APP)</h3>
+                  <div className='flex flex-col'>
+                    <p><strong>Rol: </strong>Desarrollo Independiente privado (Diciembre 2022)</p>
+                    <p><strong>Metodología: </strong>Cascada</p>
+                    <p><strong>Tecnologías: </strong> JavaScript, TailwindCSS, HTML, CSS.</p>
+                    <p><strong>Descripción: </strong>
+                    Diseñe y desarrolle una aplicacion de una ruleta con posibilidad de añadir elementos o eliminarlos, girar la ruleta, indicando un ganador al cual se le puede 
+                    preservar o eliminar de la misma lista.</p>
+                  </div>
+                  <hr className='my-2' />
+                  <div className="flex w-full items-end justify-between">
+                    <div className='flex flex-row gap-5'>
+                      <Avatar alt="JavaScript logo" src={Javascript} />
                     </div>
                   </div>
                 </div>
