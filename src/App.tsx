@@ -160,6 +160,7 @@ const App = () => {
     const canvases = document.querySelectorAll("canvas");
     canvases.forEach(canvas => {
       canvas.style.minHeight = "250px";
+      canvas.style.width = "240px";
     });
   }, []);
 
@@ -178,6 +179,13 @@ const App = () => {
               className="text-6xl md:text-8xl font-bold mt-4 mb-4 text-white"
             >
               <ThreeTorus srcModel='./models/BuhoBlancoTJS.glb'/>
+            </motion.h1>
+            <motion.h1 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5 }}
+              className="text-6xl md:text-8xl font-bold mt-4 mb-4 text-white"
+            >
               Brandon Alan Carabajal
             </motion.h1>
             <motion.p 
