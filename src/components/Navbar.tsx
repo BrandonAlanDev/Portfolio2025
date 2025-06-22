@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import BADIcon from '../assets/img/logos/BADclean.webp' 
 
 
 const Navbar = ({ activeSection, setActiveSection }: { activeSection: string, setActiveSection: (section: string) => void }) => {
@@ -48,8 +49,9 @@ const Navbar = ({ activeSection, setActiveSection }: { activeSection: string, se
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-xl font-bold select-none"
+            className="text-xl font-bold select-none flex flex-row"
           >
+            <img src={BADIcon} alt="LOGO" className='logo' />
             BrandonAlanDev
           </motion.div>
 

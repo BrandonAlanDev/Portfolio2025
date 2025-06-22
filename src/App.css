@@ -19,3 +19,6 @@
   img:hover{
     filter: drop-shadow(4px 4px 10px rgba(255, 255, 255, 1));
   }
+  .logo{
+    height: 40px;
+  }
