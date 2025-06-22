@@ -17,6 +17,8 @@ import MsSql from './assets/img/logos/mssql.png'
 import MySql from './assets/img/logos/mysql.png'
 import React from './assets/img/logos/react.png'
 import DotNet from './assets/img/logos/dotnet.png'
+import Angular from './assets/img/logos/angular.png'
+import Springboot from './assets/img/logos/springboot.png'
 import CVEs from './assets/pdf/Brandon-CV-Español-2025.pdf'
 import CVEn from './assets/pdf/BrandonCV-English-2025.pdf'
 import Avatar from '@mui/material/Avatar'
@@ -25,6 +27,7 @@ import ProyectIMG1 from './assets/img/projects/Proyect1.png'
 import ProyectIMG2 from './assets/img/projects/Proyect2.png'
 import ProyectIMG3 from './assets/img/projects/Proyect3.png'
 import ProyectIMG4 from './assets/img/projects/Proyect4.png'
+import ProyectIMG5 from './assets/img/projects/Proyect5.png'
 import * as THREE from 'three'
 
 const Section = ({ id, title, children, dark }: { id: string, title: string, children: React.ReactNode, dark: boolean }) => {
@@ -144,7 +147,9 @@ const logos = [
   CSharp,
   Java,
   React,
+  Angular,
   DotNet,
+  Springboot,
   MsSql,
   MySql,
 ];
@@ -265,7 +270,7 @@ const App = () => {
                 <div className='items-center w-full'>
                   <h3 className="text-xl font-bold mb-4">Finales Hilet </h3>
                   <div className='flex flex-col'>
-                    <p><strong>Rol: </strong>Desarrollador Front-End Junior</p>
+                    <p><strong>Rol: </strong>Desarrollador Front-End</p>
                     <p><strong>Metodología: </strong>SCRUM (Enero 2024 - Diciembre 2024)</p>
                     <p><strong>Tecnologías: </strong>React, JavaScript, Fetch, API Rest, SQL, Dapper, ASP.NET, GIT, TRELLO.</p>
                     <p><strong>Descripción: </strong>
@@ -283,6 +288,7 @@ const App = () => {
                       <Avatar alt=".NET logo" src={DotNet} />
                       <Avatar alt="SQL Server logo" src={MsSql} />
                     </div>
+                    <a href="https://github.com/BrandonAlanDev/frontend-hilet.git" target='_blank'><GitHub sx={{ fontSize: '70px' }} /> Publico</a>
                   </div>
                 </div>
               </div>
@@ -296,7 +302,7 @@ const App = () => {
                 <div className='items-center w-full'>
                   <h3 className="text-xl font-bold mb-4">Sistema de gestion : Finca Sagrado Corazon</h3>
                   <div className='flex flex-col'>
-                    <p><strong>Rol: </strong>Desarrollo Independiente por encargo (Febrero 2023 - Julio 2023)</p>
+                    <p><strong>Rol: </strong>Desarrollador Full-Stack Independiente por encargo (Febrero 2023 - Julio 2023)</p>
                     <p><strong>Metodología: </strong>Cascada</p>
                     <p><strong>Tecnologías: </strong> WPF, C# .NET, Microsoft SQL Server.</p>
                     <p><strong>Descripción: </strong>
@@ -320,12 +326,40 @@ const App = () => {
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
               <div className='flex flex-col md:flex-row items-center gap-8'>
+                <img src={ProyectIMG5} className='w-[200px] h-[200px] '/>
+                <div className='items-center w-full'>
+                  <h3 className="text-xl font-bold mb-4">Gestion de Catalogo de Vehiculos (Proyecto Final de Ingenieria de Software)</h3>
+                  <div className='flex flex-col'>
+                    <p><strong>Rol: </strong>Desarrollador Full-Stack (Noviembre - Diciembre 2024)</p>
+                    <p><strong>Tecnologías: </strong> Java, Springboot, AngularJS, Mave, JPA Hibernate, Apache, MySQL, JavaScript, Bootstrap 5, HTML, CSS.</p>
+                    <p><strong>Descripción: </strong>
+                    Diseñe y desarrolle una aplicacion con Java Springbooot + Angular, que permite gestionar con un formulario, un catalogo de vehiculos (subir, modificar o eliminar).
+                    </p>
+                  </div>
+                  <hr className='my-2' />
+                  <div className="flex w-full items-end justify-between">
+                    <div className='flex flex-row gap-5'>
+                      <Avatar alt="Java logo" src={Java} />
+                      <Avatar alt="Springboot logo" src={Springboot} />
+                      <Avatar alt="Angular logo" src={Angular} />
+                      <Avatar alt="JavaScript logo" src={Javascript} />
+                      <Avatar alt="MySQL Logo" src={MySql} />
+                    </div>
+                    <a href="https://github.com/BrandonAlanDev/Auto-Angular-Springboot.git" target='_blank'><GitHub sx={{ fontSize: '70px' }} /> Publico</a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              <div className='flex flex-col md:flex-row items-center gap-8'>
                 <img src={ProyectIMG3} className='w-[200px] h-[200px] '/>
                 <div className='items-center w-full'>
                   <h3 className="text-xl font-bold mb-4">Drag & Drop Tier list Maker de libros</h3>
                   <div className='flex flex-col'>
                     <p><strong>Rol: </strong>Desarrollo Independiente privado (Febrero 2025)</p>
-                    <p><strong>Metodología: </strong>Cascada</p>
                     <p><strong>Tecnologías: </strong> JavaScript, TailwindCSS, HTML, CSS.</p>
                     <p><strong>Descripción: </strong>
                     Diseñe y desarrolle una aplicacion drag and drop para crear Tier list completamente editable y con posibilidad de descargar el resultado.</p>
@@ -349,7 +383,6 @@ const App = () => {
                   <h3 className="text-xl font-bold mb-4">Girar Ruleta (WEB APP)</h3>
                   <div className='flex flex-col'>
                     <p><strong>Rol: </strong>Desarrollo Independiente privado (Diciembre 2022)</p>
-                    <p><strong>Metodología: </strong>Cascada</p>
                     <p><strong>Tecnologías: </strong> JavaScript, TailwindCSS, HTML, CSS.</p>
                     <p><strong>Descripción: </strong>
                     Diseñe y desarrolle una aplicacion de una ruleta con posibilidad de añadir elementos o eliminarlos, girar la ruleta, indicando un ganador al cual se le puede 

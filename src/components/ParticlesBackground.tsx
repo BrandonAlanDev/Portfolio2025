@@ -2,7 +2,7 @@ import ParticlesBg from 'particles-bg';
 
 const ParticlesBackground = () => {
   return (
-    <div className="absolute w-full h-full z-0">
+    <div className="absolute w-[100vw] h-full z-0">
       <ParticlesBg
         type="cobweb"
         bg={true}
