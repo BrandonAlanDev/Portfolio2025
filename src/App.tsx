@@ -9,7 +9,6 @@ import { useLoader} from '@react-three/fiber'
 import { Suspense } from 'react'
 import ParticlesBackground from './components/ParticlesBackground'
 import Navbar from './components/Navbar'
-import Image from './assets/img/Brandon.jpg'
 import CSharp from './assets/img/logos/csharp.png'
 import Javascript from './assets/img/logos/javascript.png'
 import Java from './assets/img/logos/java.png'
@@ -253,7 +252,7 @@ const App = () => {
             <div>🚀 Mi objetivo es formar parte de equipos de desarrollo dinámicos, contribuir con soluciones eficientes y seguir creciendo profesionalmente en el mundo del software.</div>
           </p>
           <div>
-          <img src={Image} alt="Brandon Carabajal" className='h-[40vh] z-10 rounded-2xl shadow-md shadow-white'/>
+          <img src="https://avatars.githubusercontent.com/u/130699120?v=4" alt="Brandon Carabajal" className=' z-10 rounded-2xl shadow-md shadow-white'/>
           </div>
         </div>
       </Section>
@@ -280,7 +279,7 @@ const App = () => {
                     Participé en reuniones SCRUM diarias y en la planificación de sprints para coordinar el progreso del proyecto.</p>
                   </div>
                   <hr className='my-2' />
-                  <div className="flex w-full items-end justify-between">
+                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
                     <div className='flex flex-row gap-5'>
                       <Avatar alt="JS logo" src={Javascript} />
                       <Avatar alt="React logo" src={React} />
@@ -288,7 +287,7 @@ const App = () => {
                       <Avatar alt=".NET logo" src={DotNet} />
                       <Avatar alt="SQL Server logo" src={MsSql} />
                     </div>
-                    <a href="https://github.com/BrandonAlanDev/frontend-hilet.git" target='_blank'><GitHub sx={{ fontSize: '70px' }} /> Publico</a>
+                    <a href="https://github.com/BrandonAlanDev/frontend-hilet.git" className='rounded-full border-white border-2 p-1' target='_blank'><GitHub sx={{ fontSize: '40px' }} /> Publico</a>
                   </div>
                 </div>
               </div>
@@ -311,7 +310,7 @@ const App = () => {
                     El proyecto abarcó desde el diseño de la base de datos hasta la implementación y pruebas de la aplicación.</p>
                   </div>
                   <hr className='my-2' />
-                  <div className="flex w-full items-end justify-between">
+                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
                     <div className='flex flex-row gap-5'>
                       <Avatar alt="C Sharp logo" src={CSharp} />
                       <Avatar alt=".NET logo" src={DotNet} />
@@ -337,7 +336,7 @@ const App = () => {
                     </p>
                   </div>
                   <hr className='my-2' />
-                  <div className="flex w-full items-end justify-between">
+                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
                     <div className='flex flex-row gap-5'>
                       <Avatar alt="Java logo" src={Java} />
                       <Avatar alt="Springboot logo" src={Springboot} />
@@ -345,7 +344,7 @@ const App = () => {
                       <Avatar alt="JavaScript logo" src={Javascript} />
                       <Avatar alt="MySQL Logo" src={MySql} />
                     </div>
-                    <a href="https://github.com/BrandonAlanDev/Auto-Angular-Springboot.git" target='_blank'><GitHub sx={{ fontSize: '70px' }} /> Publico</a>
+                    <a href="https://github.com/BrandonAlanDev/Auto-Angular-Springboot.git" className='rounded-full border-white border-2 p-1' target='_blank'><GitHub sx={{ fontSize: '40px' }} /> Publico</a>
                   </div>
                 </div>
               </div>
@@ -365,7 +364,7 @@ const App = () => {
                     Diseñe y desarrolle una aplicacion drag and drop para crear Tier list completamente editable y con posibilidad de descargar el resultado.</p>
                   </div>
                   <hr className='my-2' />
-                  <div className="flex w-full items-end justify-between">
+                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
                     <div className='flex flex-row gap-5'>
                       <Avatar alt="JavaScript logo" src={Javascript} />
                     </div>
@@ -389,7 +388,7 @@ const App = () => {
                     preservar o eliminar de la misma lista.</p>
                   </div>
                   <hr className='my-2' />
-                  <div className="flex w-full items-end justify-between">
+                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
                     <div className='flex flex-row gap-5'>
                       <Avatar alt="JavaScript logo" src={Javascript} />
                     </div>
@@ -406,7 +405,7 @@ const App = () => {
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 mb-4 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
               <div className='flex flex-col md:flex-row items-center gap-8  font-bold '>
-                <img src={Image} className='w-[200px] h-[200px]  rounded-2xl'/>
+                <img src="https://avatars.githubusercontent.com/u/130699120?v=4" className='w-[200px] h-[200px]  rounded-2xl'/>
                 <div className='flex-col items-center w-full'>
                   <h2 className='text-2xl mb-4'>Contacto directo</h2>
                   <div className='items-center w-full'>
