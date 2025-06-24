@@ -33,7 +33,7 @@ const Section = ({ id, title, children, dark }: { id: string, title: string, chi
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <section id={id} className={`min-h-screen py-20 px-8 md:px-20 flex flex-col items-center ${(!dark)?'bg-linear-to-br from-white to-gray-200':'bg-linear-to-tr from-black to-gray-800'}`}>
+    <section id={id} className={`min-h-screen w-full py-20 px-8 md:px-20 flex flex-col items-center ${(!dark)?'bg-linear-to-br from-white to-gray-200':'bg-linear-to-tr from-black to-gray-800'}`}>
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
@@ -163,18 +163,20 @@ const App = () => {
   useEffect(() => {
     const canvases = document.querySelectorAll("canvas");
     canvases.forEach(canvas => {
-      canvas.style.minHeight = "250px";
-      canvas.style.width = "240px";
+      if(!canvas.classList.contains("particles-bg-canvas-self")){
+        canvas.style.minHeight = "250px";
+        canvas.style.width = "240px";
+      }
     });
   }, []);
 
   return (
-    <div className="bg-white text-black">
+    <div className="bg-white text-black align-middle justify-center items-center">
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
       
-      <section id="home" className="relative min-h-screen h-auto flex flex-col items-center justify-center select-none gap-5 pt-[70px] pb-2">
+      <section id="home" className="relative w-[100vw] min-h-screen h-auto flex flex-col items-center justify-center align-middle select-none gap-5 pt-[70px] pb-2">
         <ParticlesBackground />
-        <div className="inset-0 flex flex-col lg:flex-row items-center justify-evenly text-left min-h-[75vh] min-w-full sm:min-w-[90vw] md:min-w-[80vw] bg-linear-to-br from-black to-gray-800 rounded-2xl p-4 gap-5">
+        <div className="inset-0 flex flex-col lg:flex-row items-center justify-evenly text-left min-h-[75vh] min-w-[100vw] sm:min-w-[90vw] md:min-w-[80vw] max-w-[100vw] bg-linear-to-br from-black to-gray-800 rounded-2xl p-4 gap-5 mx-auto">
           <div className="text-center z-10">
             <motion.h1 
               initial={{ opacity: 0 }}
@@ -188,7 +190,7 @@ const App = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5 }}
-              className="text-6xl md:text-8xl font-bold mt-4 mb-4 text-white"
+              className="text-3xl md:text-6xl lg:text-8xl font-bold mt-4 mb-4 text-white"
             >
               Brandon Alan Carabajal
             </motion.h1>

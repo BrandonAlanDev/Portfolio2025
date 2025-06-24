@@ -1,13 +1,15 @@
 import ParticlesBg from 'particles-bg';
 
 const ParticlesBackground = () => {
+  const isMobile = window.innerWidth < 768;
+  const particleCount = isMobile ? 100 : 400;
   return (
     <div className="absolute w-[100vw] h-full z-0">
       <ParticlesBg
         type="cobweb"
         bg={true}
         config={{
-          num: [500, 1000],
+          num: [particleCount,particleCount*2],
           rps: 0.5,
           radius: [2, 6],
           life: [2, 5],
