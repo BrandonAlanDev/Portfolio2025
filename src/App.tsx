@@ -154,12 +154,14 @@ const logos = [
 ];
 const Copy = (texto : any) => {
   navigator.clipboard.writeText(texto)
-    .then(() => alert("Texto copiado al portapapeles"))
-    .catch((err) => console.error("Error al copiar el texto: ", err));
+  .then(() => alert("Texto copiado al portapapeles"))
+  .catch((err) => console.error("Error al copiar el texto: ", err));
 };
 
 const App = () => {
+  const [language, setLanguage] = useState<'en' | 'es'>('en');
   const [activeSection, setActiveSection] = useState('home')
+  const [titles,setTitles] = useState(['Systems Analyst','Fullstack Developer','About Me','Projects','Contact']);
   useEffect(() => {
     const canvases = document.querySelectorAll("canvas");
     canvases.forEach(canvas => {
@@ -169,10 +171,13 @@ const App = () => {
       }
     });
   }, []);
+  useEffect(()=>{
+    language === 'en' ? setTitles(['Systems Analyst','Fullstack Developer','About Me','Projects','Contact']) : setTitles(['Analista de Sistemas','Desarrollador Fullstack','Sobre mí','Proyectos','Contacto']);
+  },[language])
 
   return (
     <div className="bg-white text-black align-middle justify-center items-center">
-      <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
+      <Navbar activeSection={activeSection} setActiveSection={setActiveSection} language={language} setLanguage={setLanguage}/>
       
       <section id="home" className="relative w-[100vw] min-h-screen h-auto flex flex-col items-center justify-center align-middle select-none gap-5 pt-[70px] pb-2">
         <ParticlesBackground />
@@ -200,7 +205,7 @@ const App = () => {
               transition={{ delay: 0.5, duration: 1 }}
               className="text-xl md:text-4xl text-white mt-2"
             >
-              Analista de Sistemas
+              {titles[0]}
             </motion.p>
             <motion.p 
               initial={{ y: 20, opacity: 0 }}
@@ -208,7 +213,7 @@ const App = () => {
               transition={{ delay: 1, duration: 1 }}
               className="text-xl md:text-4xl text-white mt-2"
             >
-              Desarrollador de Software
+              {titles[1]}
             </motion.p>
             <motion.p 
               initial={{ y: 20, opacity: 0 }}
@@ -237,21 +242,40 @@ const App = () => {
       </div>
       </section>
 
-      <Section id="about" title="Sobre mí" dark={true}>
+      <Section id="about" title={titles[2]} dark={true}>
         <div className='flex flex-col lg:flex-row justify-between p-4 gap-5 items-center'>
           <p className="text-gray-200 text-xl font-bold shadow-white leading-relaxed flex-col text-left">
-            <div>👋 ¡Hola! Soy Brandon Alan Carabajal, un desarrollador de software apasionado por la tecnología y la innovación.</div>
-            <div>Tengo 25 Años y soy de Mar del Plata - Argentina 🌊</div>
-            <div>Desde 2021 me he dedicado a crear soluciones digitales utilizando múltiples herramientas y lenguajes de programación.</div>
-            <div>En 2022 inicié la carrera de Analista de Sistemas en el Instituto Argentino de la Empresa (HILET), y me gradué en diciembre de 2024.</div>
-            <div className='my-4' />
-            <div className='text-2xl mb-2'>💡 ¿Qué me define?</div>
-            <div>✔️ Experiencia Full Stack: Desarrollo aplicaciones con .NET, React y SQL.</div>
-            <div>✔️ Lenguajes principales: C#, JavaScript y Java.</div>
-            <div>✔️ Trabajo en equipo: Uso metodologías ágiles como SCRUM, Git y herramientas de gestión como Trello.</div>
-            <div>✔️ Mentalidad de aprendizaje continuo: Siempre en busca de nuevos desafíos y oportunidades para mejorar mis habilidades.</div>
-            <div className='my-4' />
-            <div>🚀 Mi objetivo es formar parte de equipos de desarrollo dinámicos, contribuir con soluciones eficientes y seguir creciendo profesionalmente en el mundo del software.</div>
+            {language === 'en' ? (
+              <>
+                <div>👋 Hi! I'm Brandon Alan Carabajal, a software developer passionate about technology and innovation.</div>
+                <div>I'm 25 years old and from Mar del Plata - Argentina 🌊</div>
+                <div>Since 2021, I've been dedicated to creating digital solutions using multiple tools and programming languages.</div>
+                <div>In 2022, I started the Systems Analyst program at Instituto Argentino de la Empresa (HILET) and graduated in December 2024.</div>
+                <div className='my-4' />
+                <div className='text-2xl mb-2'>💡 What defines me?</div>
+                <div>✔️ Full Stack experience: I develop apps with .NET, React, and SQL.</div>
+                <div>✔️ Main languages: C#, JavaScript, and Java.</div>
+                <div>✔️ Teamwork: I use agile methodologies like SCRUM, Git, and management tools like Trello.</div>
+                <div>✔️ Lifelong learner: Always looking for new challenges and ways to improve my skills.</div>
+                <div className='my-4' />
+                <div>🚀 My goal is to be part of dynamic development teams, contribute with efficient solutions, and continue growing professionally in the software world.</div>
+              </>
+            ) : (
+              <>
+                <div>👋 ¡Hola! Soy Brandon Alan Carabajal, un desarrollador de software apasionado por la tecnología y la innovación.</div>
+                <div>Tengo 25 años y soy de Mar del Plata - Argentina 🌊</div>
+                <div>Desde 2021 me he dedicado a crear soluciones digitales utilizando múltiples herramientas y lenguajes de programación.</div>
+                <div>En 2022 inicié la carrera de Analista de Sistemas en el Instituto Argentino de la Empresa (HILET), y me gradué en diciembre de 2024.</div>
+                <div className='my-4' />
+                <div className='text-2xl mb-2'>💡 ¿Qué me define?</div>
+                <div>✔️ Experiencia Full Stack: Desarrollo aplicaciones con .NET, React y SQL.</div>
+                <div>✔️ Lenguajes principales: C#, JavaScript y Java.</div>
+                <div>✔️ Trabajo en equipo: Uso metodologías ágiles como SCRUM, Git y herramientas de gestión como Trello.</div>
+                <div>✔️ Mentalidad de aprendizaje continuo: Siempre en busca de nuevos desafíos y oportunidades para mejorar mis habilidades.</div>
+                <div className='my-4' />
+                <div>🚀 Mi objetivo es formar parte de equipos de desarrollo dinámicos, contribuir con soluciones eficientes y seguir creciendo profesionalmente en el mundo del software.</div>
+              </>
+            )}
           </p>
           <div>
           <img src="https://avatars.githubusercontent.com/u/130699120?v=4" alt="Brandon Carabajal" className=' z-10 rounded-2xl shadow-md shadow-white'/>
@@ -260,148 +284,301 @@ const App = () => {
       </Section>
 
       <ParticlesBackground />
-      <Section id="projects" title="Proyectos" dark={false}>
+      <Section id="projects" title={titles[3]} dark={false}>
         <div className="flex flex-col w-[90vw] items-center gap-8">
             <motion.div 
               whileHover={{ scale: 1.05 }}
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
-              <div className='flex flex-col md:flex-row items-center gap-8'>
-                <img src={ProyectIMG1} className='w-[200px] '/>
-                <div className='items-center w-full'>
-                  <h3 className="text-xl font-bold mb-4">Finales Hilet </h3>
-                  <div className='flex flex-col'>
-                    <p><strong>Rol: </strong>Desarrollador Front-End</p>
-                    <p><strong>Metodología: </strong>SCRUM (Enero 2024 - Diciembre 2024)</p>
-                    <p><strong>Tecnologías: </strong>React, JavaScript, Fetch, API Rest, SQL, Dapper, ASP.NET, GIT, TRELLO.</p>
-                    <p><strong>Descripción: </strong>
-                    Desarrollé la interfaz de usuario para una aplicación web que permite a los estudiantes inscribirse en los exámenes finales.
-                    Colaboré estrechamente con el equipo de back-end para integrar las API REST y asegurar una experiencia de usuario fluida.
-                    Utilicé React para crear componentes reutilizables y gestioné el estado de la aplicación para garantizar la coherencia y eficiencia.
-                    Participé en reuniones SCRUM diarias y en la planificación de sprints para coordinar el progreso del proyecto.</p>
-                  </div>
-                  <hr className='my-2' />
-                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
-                    <div className='flex flex-row gap-5'>
-                      <Avatar alt="JS logo" src={Javascript} />
-                      <Avatar alt="React logo" src={React} />
-                      <Avatar alt="C Sharp logo" src={CSharp} />
-                      <Avatar alt=".NET logo" src={DotNet} />
-                      <Avatar alt="SQL Server logo" src={MsSql} />
+              {language === 'en' ? (
+              <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG1} className='w-[200px] object-cover' />
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Hilet Finals</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Role: </strong>Front-End Developer</p>
+                      <p><strong>Methodology: </strong>SCRUM (January 2024 - December 2024)</p>
+                      <p><strong>Technologies: </strong>React, JavaScript, Fetch, REST API, SQL, Dapper, ASP.NET, GIT, TRELLO.</p>
+                      <p><strong>Description: </strong>
+                        I developed the user interface for a web application that allows students to register for final exams.
+                        I closely collaborated with the back-end team to integrate REST APIs and ensure a smooth user experience.
+                        I used React to build reusable components and managed the application state to ensure consistency and efficiency.
+                        I participated in daily SCRUM meetings and sprint planning sessions to coordinate project progress.
+                      </p>
                     </div>
-                    <a href="https://github.com/BrandonAlanDev/frontend-hilet.git" className='rounded-full border-white border-2 p-1' target='_blank'><GitHub sx={{ fontSize: '40px' }} /> Publico</a>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="JS logo" src={Javascript} />
+                        <Avatar alt="React logo" src={React} />
+                        <Avatar alt="C Sharp logo" src={CSharp} />
+                        <Avatar alt=".NET logo" src={DotNet} />
+                        <Avatar alt="SQL Server logo" src={MsSql} />
+                      </div>
+                      <a href="https://github.com/BrandonAlanDev/frontend-hilet.git" className='rounded-full border-white border-2 p-1' target='_blank'>
+                        <GitHub sx={{ fontSize: '40px' }} /> Public
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+                </>
+              ) : (
+                <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG1} className='w-[200px] object-cover'/>
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Finales Hilet </h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Rol: </strong>Desarrollador Front-End</p>
+                      <p><strong>Metodología: </strong>SCRUM (Enero 2024 - Diciembre 2024)</p>
+                      <p><strong>Tecnologías: </strong>React, JavaScript, Fetch, API Rest, SQL, Dapper, ASP.NET, GIT, TRELLO.</p>
+                      <p><strong>Descripción: </strong>
+                      Desarrollé la interfaz de usuario para una aplicación web que permite a los estudiantes inscribirse en los exámenes finales.
+                      Colaboré estrechamente con el equipo de back-end para integrar las API REST y asegurar una experiencia de usuario fluida.
+                      Utilicé React para crear componentes reutilizables y gestioné el estado de la aplicación para garantizar la coherencia y eficiencia.
+                      Participé en reuniones SCRUM diarias y en la planificación de sprints para coordinar el progreso del proyecto.</p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="JS logo" src={Javascript} />
+                        <Avatar alt="React logo" src={React} />
+                        <Avatar alt="C Sharp logo" src={CSharp} />
+                        <Avatar alt=".NET logo" src={DotNet} />
+                        <Avatar alt="SQL Server logo" src={MsSql} />
+                      </div>
+                      <a href="https://github.com/BrandonAlanDev/frontend-hilet.git" className='rounded-full border-white border-2 p-1' target='_blank'><GitHub sx={{ fontSize: '40px' }} /> Publico</a>
+                    </div>
+                  </div>
+                </div>
+                </>
+              )}
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
-              <div className='flex flex-col md:flex-row items-center gap-8'>
-                <img src={ProyectIMG2} className='w-[200px] h-[200px] '/>
-                <div className='items-center w-full'>
-                  <h3 className="text-xl font-bold mb-4">Sistema de gestion : Finca Sagrado Corazon</h3>
-                  <div className='flex flex-col'>
-                    <p><strong>Rol: </strong>Desarrollador Full-Stack Independiente por encargo (Febrero 2023 - Julio 2023)</p>
-                    <p><strong>Metodología: </strong>Cascada</p>
-                    <p><strong>Tecnologías: </strong> WPF, C# .NET, Microsoft SQL Server.</p>
-                    <p><strong>Descripción: </strong>
-                    Diseñé y desarrollé una aplicación de escritorio para gestionar las operaciones de un taller de arte, incluyendo la gestión de alumnos, cursos y materiales.
-                    Implementé funcionalidades de Alta, Baja, Modificación y Listado (ABML) utilizando WPF para la interfaz de usuario y Microsoft SQL Server para la base de datos.
-                    El proyecto abarcó desde el diseño de la base de datos hasta la implementación y pruebas de la aplicación.</p>
-                  </div>
-                  <hr className='my-2' />
-                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
-                    <div className='flex flex-row gap-5'>
-                      <Avatar alt="C Sharp logo" src={CSharp} />
-                      <Avatar alt=".NET logo" src={DotNet} />
-                      <Avatar alt="SQL Server logo" src={MsSql} />
+              {language === 'en' ? (
+              <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG2} className='w-[200px] h-[200px] object-cover' />
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Management System: Finca Sagrado Corazón</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Role: </strong>Freelance Full-Stack Developer on demand (February 2023 - July 2023)</p>
+                      <p><strong>Methodology: </strong>Waterfall</p>
+                      <p><strong>Technologies: </strong>WPF, C# .NET, Microsoft SQL Server.</p>
+                      <p><strong>Description: </strong>
+                        I designed and developed a desktop application to manage the operations of an art workshop, including student, course, and material management.
+                        I implemented Create, Read, Update, and Delete (CRUD) functionalities using WPF for the user interface and Microsoft SQL Server for the database.
+                        The project covered everything from database design to implementation and application testing.
+                      </p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="C Sharp logo" src={CSharp} />
+                        <Avatar alt=".NET logo" src={DotNet} />
+                        <Avatar alt="SQL Server logo" src={MsSql} />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+                </>
+              ) : (
+                <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG2} className='w-[200px] h-[200px] object-cover'/>
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Sistema de gestion : Finca Sagrado Corazon</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Rol: </strong>Desarrollador Full-Stack Independiente por encargo (Febrero 2023 - Julio 2023)</p>
+                      <p><strong>Metodología: </strong>Cascada</p>
+                      <p><strong>Tecnologías: </strong> WPF, C# .NET, Microsoft SQL Server.</p>
+                      <p><strong>Descripción: </strong>
+                      Diseñé y desarrollé una aplicación de escritorio para gestionar las operaciones de un taller de arte, incluyendo la gestión de alumnos, cursos y materiales.
+                      Implementé funcionalidades de Alta, Baja, Modificación y Listado (ABML) utilizando WPF para la interfaz de usuario y Microsoft SQL Server para la base de datos.
+                      El proyecto abarcó desde el diseño de la base de datos hasta la implementación y pruebas de la aplicación.</p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="C Sharp logo" src={CSharp} />
+                        <Avatar alt=".NET logo" src={DotNet} />
+                        <Avatar alt="SQL Server logo" src={MsSql} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </>
+              )}
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
-              <div className='flex flex-col md:flex-row items-center gap-8'>
-                <img src={ProyectIMG5} className='w-[200px] h-[200px] '/>
-                <div className='items-center w-full'>
-                  <h3 className="text-xl font-bold mb-4">Gestion de Catalogo de Vehiculos (Proyecto Final de Ingenieria de Software)</h3>
-                  <div className='flex flex-col'>
-                    <p><strong>Rol: </strong>Desarrollador Full-Stack (Noviembre - Diciembre 2024)</p>
-                    <p><strong>Tecnologías: </strong> Java, Springboot, AngularJS, Mave, JPA Hibernate, Apache, MySQL, JavaScript, Bootstrap 5, HTML, CSS.</p>
-                    <p><strong>Descripción: </strong>
-                    Diseñe y desarrolle una aplicacion con Java Springbooot + Angular, que permite gestionar con un formulario, un catalogo de vehiculos (subir, modificar o eliminar).
-                    </p>
-                  </div>
-                  <hr className='my-2' />
-                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
-                    <div className='flex flex-row gap-5'>
-                      <Avatar alt="Java logo" src={Java} />
-                      <Avatar alt="Springboot logo" src={Springboot} />
-                      <Avatar alt="Angular logo" src={Angular} />
-                      <Avatar alt="JavaScript logo" src={Javascript} />
-                      <Avatar alt="MySQL Logo" src={MySql} />
+              {language === 'en' ? (
+              <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG5} className='w-[200px] h-[200px] object-cover' />
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Vehicle Catalog Management (Final Project - Software Engineering)</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Role: </strong>Full-Stack Developer (November - December 2024)</p>
+                      <p><strong>Technologies: </strong>Java, Spring Boot, AngularJS, Maven, JPA Hibernate, Apache, MySQL, JavaScript, Bootstrap 5, HTML, CSS.</p>
+                      <p><strong>Description: </strong>
+                        I designed and developed an application using Java Spring Boot and Angular that allows users to manage a vehicle catalog through a form (add, update, or delete vehicles).
+                      </p>
                     </div>
-                    <a href="https://github.com/BrandonAlanDev/Auto-Angular-Springboot.git" className='rounded-full border-white border-2 p-1' target='_blank'><GitHub sx={{ fontSize: '40px' }} /> Publico</a>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="Java logo" src={Java} />
+                        <Avatar alt="Springboot logo" src={Springboot} />
+                        <Avatar alt="Angular logo" src={Angular} />
+                        <Avatar alt="JavaScript logo" src={Javascript} />
+                        <Avatar alt="MySQL Logo" src={MySql} />
+                      </div>
+                      <a href="https://github.com/BrandonAlanDev/Auto-Angular-Springboot.git" className='rounded-full border-white border-2 p-1' target='_blank'>
+                        <GitHub sx={{ fontSize: '40px' }} /> Public
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+                </>
+              ) : (
+                <>
+                  <div className='flex flex-col md:flex-row items-center gap-8'>
+                    <img src={ProyectIMG5} className='w-[200px] h-[200px] object-cover'/>
+                    <div className='items-center w-full'>
+                      <h3 className="text-xl font-bold mb-4">Gestion de Catalogo de Vehiculos (Proyecto Final de Ingenieria de Software)</h3>
+                      <div className='flex flex-col'>
+                        <p><strong>Rol: </strong>Desarrollador Full-Stack (Noviembre - Diciembre 2024)</p>
+                        <p><strong>Tecnologías: </strong> Java, Springboot, AngularJS, Mave, JPA Hibernate, Apache, MySQL, JavaScript, Bootstrap 5, HTML, CSS.</p>
+                        <p><strong>Descripción: </strong>
+                        Diseñe y desarrolle una aplicacion con Java Springbooot + Angular, que permite gestionar con un formulario, un catalogo de vehiculos (subir, modificar o eliminar).
+                        </p>
+                      </div>
+                      <hr className='my-2' />
+                      <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                        <div className='flex flex-row gap-5'>
+                          <Avatar alt="Java logo" src={Java} />
+                          <Avatar alt="Springboot logo" src={Springboot} />
+                          <Avatar alt="Angular logo" src={Angular} />
+                          <Avatar alt="JavaScript logo" src={Javascript} />
+                          <Avatar alt="MySQL Logo" src={MySql} />
+                        </div>
+                        <a href="https://github.com/BrandonAlanDev/Auto-Angular-Springboot.git" className='rounded-full border-white border-2 p-1' target='_blank'><GitHub sx={{ fontSize: '40px' }} /> Publico</a>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
-              <div className='flex flex-col md:flex-row items-center gap-8'>
-                <img src={ProyectIMG3} className='w-[200px] h-[200px] '/>
-                <div className='items-center w-full'>
-                  <h3 className="text-xl font-bold mb-4">Drag & Drop Tier list Maker de libros</h3>
-                  <div className='flex flex-col'>
-                    <p><strong>Rol: </strong>Desarrollo Independiente privado (Febrero 2025)</p>
-                    <p><strong>Tecnologías: </strong> JavaScript, TailwindCSS, HTML, CSS.</p>
-                    <p><strong>Descripción: </strong>
-                    Diseñe y desarrolle una aplicacion drag and drop para crear Tier list completamente editable y con posibilidad de descargar el resultado.</p>
-                  </div>
-                  <hr className='my-2' />
-                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
-                    <div className='flex flex-row gap-5'>
-                      <Avatar alt="JavaScript logo" src={Javascript} />
+              {language === 'en' ? (
+              <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG3} className='w-[200px] h-[200px] object-cover' />
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Drag & Drop Book Tier List Maker</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Role: </strong>Private Project (February 2025)</p>
+                      <p><strong>Technologies: </strong>JavaScript, TailwindCSS, HTML, CSS.</p>
+                      <p><strong>Description: </strong>
+                        I designed and developed a drag-and-drop application to create fully editable tier lists with the ability to download the final result.
+                      </p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="JavaScript logo" src={Javascript} />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+                </>
+              ) : (
+                <>
+                  <div className='flex flex-col md:flex-row items-center gap-8'>
+                    <img src={ProyectIMG3} className='w-[200px] h-[200px] object-cover'/>
+                    <div className='items-center w-full'>
+                      <h3 className="text-xl font-bold mb-4">Drag & Drop Tier list Maker de libros</h3>
+                      <div className='flex flex-col'>
+                        <p><strong>Rol: </strong>Desarrollo Independiente privado (Febrero 2025)</p>
+                        <p><strong>Tecnologías: </strong> JavaScript, TailwindCSS, HTML, CSS.</p>
+                        <p><strong>Descripción: </strong>
+                        Diseñe y desarrolle una aplicacion drag and drop para crear Tier list completamente editable y con posibilidad de descargar el resultado.</p>
+                      </div>
+                      <hr className='my-2' />
+                      <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                        <div className='flex flex-row gap-5'>
+                          <Avatar alt="JavaScript logo" src={Javascript} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
-              <div className='flex flex-col md:flex-row items-center gap-8'>
-                <img src={ProyectIMG4} className='w-[200px] h-[200px] '/>
-                <div className='items-center w-full'>
-                  <h3 className="text-xl font-bold mb-4">Girar Ruleta (WEB APP)</h3>
-                  <div className='flex flex-col'>
-                    <p><strong>Rol: </strong>Desarrollo Independiente privado (Diciembre 2022)</p>
-                    <p><strong>Tecnologías: </strong> JavaScript, TailwindCSS, HTML, CSS.</p>
-                    <p><strong>Descripción: </strong>
-                    Diseñe y desarrolle una aplicacion de una ruleta con posibilidad de añadir elementos o eliminarlos, girar la ruleta, indicando un ganador al cual se le puede 
-                    preservar o eliminar de la misma lista.</p>
-                  </div>
-                  <hr className='my-2' />
-                  <div className="flex flex-wrap w-full items-end justify-between gap-4">
-                    <div className='flex flex-row gap-5'>
-                      <Avatar alt="JavaScript logo" src={Javascript} />
+              {language === 'en' ? (
+              <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG4} className='w-[200px] h-[200px] object-cover' />
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Spin the Wheel (Web App)</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Role: </strong>Private Project (December 2022)</p>
+                      <p><strong>Technologies: </strong>JavaScript, TailwindCSS, HTML, CSS.</p>
+                      <p><strong>Description: </strong>
+                        I designed and developed a wheel spin application with the ability to add or remove items, spin the wheel, and select a winner who can either be kept or removed from the list.
+                      </p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="JavaScript logo" src={Javascript} />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+                </>
+              ) : (
+                <>
+                  <div className='flex flex-col md:flex-row items-center gap-8'>
+                    <img src={ProyectIMG4} className='w-[200px] h-[200px] object-cover'/>
+                    <div className='items-center w-full'>
+                      <h3 className="text-xl font-bold mb-4">Girar Ruleta (WEB APP)</h3>
+                      <div className='flex flex-col'>
+                        <p><strong>Rol: </strong>Desarrollo Independiente privado (Diciembre 2022)</p>
+                        <p><strong>Tecnologías: </strong> JavaScript, TailwindCSS, HTML, CSS.</p>
+                        <p><strong>Descripción: </strong>
+                        Diseñe y desarrolle una aplicacion de una ruleta con posibilidad de añadir elementos o eliminarlos, girar la ruleta, indicando un ganador al cual se le puede 
+                        preservar o eliminar de la misma lista.</p>
+                      </div>
+                      <hr className='my-2' />
+                      <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                        <div className='flex flex-row gap-5'>
+                          <Avatar alt="JavaScript logo" src={Javascript} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </motion.div>
         </div>
       </Section>
 
-      <Section id="contact" title="Contacto" dark={true}>
+      <Section id="contact" title={titles[4]} dark={true}>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 mb-4 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
@@ -409,7 +586,7 @@ const App = () => {
               <div className='flex flex-col md:flex-row items-center gap-8  font-bold '>
                 <img src="https://avatars.githubusercontent.com/u/130699120?v=4" className='w-[200px] h-[200px]  rounded-2xl'/>
                 <div className='flex-col items-center w-full'>
-                  <h2 className='text-2xl mb-4'>Contacto directo</h2>
+                  <h2 className='text-2xl mb-4'>{language === 'en' ? 'Direct contact':'Contacto directo'}</h2>
                   <div className='items-center w-full'>
                     <h3 className="text-xl font-bold mb-2">E-Mail</h3>
                     <div className='flex flex-row w-full justify-between items-center'>
@@ -417,7 +594,7 @@ const App = () => {
                       <button className='border-white border-2 p-2 rounded-full cursor-pointer' onClick={()=>{Copy('Brandoncarabajal@gmail.com');}}>Copiar</button>
                     </div>
                     <hr className='my-2' />
-                    <h3 className="text-xl font-bold mb-2">Teléfono</h3>
+                    <h3 className="text-xl font-bold mb-2">{language === 'en' ? 'Phone':'Teléfono'}</h3>
                     <div className='flex flex-row w-full justify-between items-center'>
                       <p >+542236686159 </p>
                       <button className='border-white border-2 p-2 rounded-full cursor-pointer' onClick={()=>{Copy('+542236686159');}}>Copiar</button>
@@ -432,7 +609,7 @@ const App = () => {
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
             >
               <div className='flex flex-col items-center gap-8  font-bold '>
-                <h2 className='text-2xl mb-4'>Redes</h2>
+                <h2 className='text-2xl mb-4'>{language === 'en' ? 'Social media':'Red social'}</h2>
                 <div className='flex flex-col md:flex-row items-center gap-8  font-bold '>
                   <a href='https://www.linkedin.com/in/brandon-alan-carabajal-97b294223/' target='blank_' className='flex-col items-center justify-center text-center w-full p-4 border-2 border-white rounded-xl hover:bg-gradient-to-tr hover:from-gray-400 hover:to-gray-900 transition-all duration-200 hover:cursor-pointer'>
                     <p><LinkedIn sx={{ fontSize: '200px' }} /></p>

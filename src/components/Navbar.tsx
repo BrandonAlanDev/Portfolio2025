@@ -1,16 +1,51 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import BADIcon from '../assets/img/logos/BADclean.webp' 
+import BADIcon from '../assets/img/logos/BADclean.webp'
 
+const translations = {
+  en: {
+    home: 'Home',
+    about: 'About Me',
+    projects: 'Projects',
+    contact: 'Contact',
+    toggleLang: 'ES',
+  },
+  es: {
+    home: 'Inicio',
+    about: 'Sobre mí',
+    projects: 'Proyectos',
+    contact: 'Contacto',
+    toggleLang: 'EN',
+  }
+}
 
-const Navbar = ({ activeSection, setActiveSection }: { activeSection: string, setActiveSection: (section: string) => void }) => {
+interface NavbarProps {
+  activeSection: string;
+  setActiveSection: (section: string) => void;
+  language: "es" | "en";
+  setLanguage: (lang: "es" | "en") => void;
+}
+
+const Navbar = ({ activeSection, setActiveSection, language, setLanguage }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const toggleLanguage = () => {
+    setLanguage(language === "es" ? "en" : "es");
+  };
+
+  useEffect(() => {
+    const userLang = navigator.language.startsWith('es') ? 'es' : 'en'
+    setLanguage(userLang)
+  }, [])
+
+  const labels = translations[language]
+
   const links = [
-    { id: 'home', label: 'Inicio' },
-    { id: 'about', label: 'Sobre mí' },
-    { id: 'projects', label: 'Proyectos' },
-    { id: 'contact', label: 'Contacto' }
+    { id: 'home', label: labels.home },
+    { id: 'about', label: labels.about },
+    { id: 'projects', label: labels.projects },
+    { id: 'contact', label: labels.contact }
   ]
 
   const scrollToSection = (id: string) => {
@@ -40,7 +75,7 @@ const Navbar = ({ activeSection, setActiveSection }: { activeSection: string, se
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [links])
 
   return (
     <nav className="fixed w-full z-50 bg-linear-to-br from-black to-gray-800 text-white backdrop-blur-sm font-bold">
@@ -55,7 +90,7 @@ const Navbar = ({ activeSection, setActiveSection }: { activeSection: string, se
             BrandonAlanDev
           </motion.div>
 
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-4 items-center">
             {links.map(link => (
               <button
                 key={link.id}
@@ -69,6 +104,14 @@ const Navbar = ({ activeSection, setActiveSection }: { activeSection: string, se
                 {link.label}
               </button>
             ))}
+
+            {/* Botón para cambiar idioma */}
+            <button
+              onClick={toggleLanguage}
+              className="text-gray-300 hover:text-white border px-2 py-1 rounded-full transition-shadow hover:shadow-md hover:shadow-white"
+            >
+              {language.toUpperCase()}
+            </button>
           </div>
 
           <button
@@ -76,11 +119,10 @@ const Navbar = ({ activeSection, setActiveSection }: { activeSection: string, se
             className="md:hidden text-gray-300 hover:text-white"
           >
             {isOpen ? (
-        <XMarkIcon className="h-6 w-6" />
-        ) : (
-        <Bars3Icon className="h-6 w-6" />
-        )}
-
+              <XMarkIcon className="h-6 w-6" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" />
+            )}
           </button>
         </div>
 
@@ -99,6 +141,12 @@ const Navbar = ({ activeSection, setActiveSection }: { activeSection: string, se
                 {link.label}
               </button>
             ))}
+            <button
+              onClick={toggleLanguage}
+              className="block text-left text-gray-300 hover:text-amber-300 border-2 p-2 rounded-full"
+            >
+              {language.toUpperCase()}
+            </button>
           </motion.div>
         )}
       </div>

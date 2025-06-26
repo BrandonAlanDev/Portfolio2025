@@ -1,4 +1,12 @@
 @import "tailwindcss";
+
+@view-transition{
+  navigation : auto;
+}
+
+::view-transition-group(*){
+  transition-duration: 1s;
+}
 @keyframes slide {
     0% {
       transform: translateX(0%);
