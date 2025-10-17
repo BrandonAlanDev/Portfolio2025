@@ -387,6 +387,9 @@ const App = () => {
                         <Avatar alt="React JS" src={React} />
                         <Avatar alt="Javascript" src={Javascript} />
                       </div>
+                      <a href="https://fincasagradocorazon.vercel.app/" className='rounded-full border-white border-2 p-1' target='_blank'>
+                        Page
+                      </a>
                     </div>
                   </div>
                 </div>
