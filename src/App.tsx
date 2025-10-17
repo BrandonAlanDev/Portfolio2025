@@ -27,6 +27,7 @@ import ProyectIMG2 from './assets/img/projects/Proyect2.png'
 import ProyectIMG3 from './assets/img/projects/Proyect3.png'
 import ProyectIMG4 from './assets/img/projects/Proyect4.png'
 import ProyectIMG5 from './assets/img/projects/Proyect5.png'
+import ProyectIMG6 from './assets/img/projects/Proyect6.png'
 import * as THREE from 'three'
 
 const Section = ({ id, title, children, dark }: { id: string, title: string, children: React.ReactNode, dark: boolean }) => {
@@ -278,7 +279,7 @@ const App = () => {
             )}
           </p>
           <div>
-          <img src="https://avatars.githubusercontent.com/u/130699120?v=4" alt="Brandon Carabajal" className=' z-10 rounded-2xl shadow-md shadow-white'/>
+          <img src="https://avatars.githubusercontent.com/u/130699120?" alt="Brandon Carabajal" className=' z-10 rounded-2xl shadow-md shadow-white'/>
           </div>
         </div>
       </Section>
@@ -286,6 +287,112 @@ const App = () => {
       <ParticlesBackground />
       <Section id="projects" title={titles[3]} dark={false}>
         <div className="flex flex-col w-[90vw] items-center gap-8">
+          <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              {language === 'en' ? (
+              <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={React} className='w-[200px] h-[200px]  object-fit' />
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Coming soon...</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Role: </strong>Freelance Web Developer</p>
+                      <p><strong>Methodology: </strong>Agile</p>
+                      <p><strong>Technologies: </strong>React JS, Typescript, Tailwind CSS.</p>
+                      <p><strong>Description: </strong>
+                        Coming soon...
+                      </p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="React JS" src={React} />
+                        <Avatar alt="Javascript" src={Javascript} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </>
+              ) : (
+                <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={React} className='w-[200px] h-[200px] object-fit'/>
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Proximamente...</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Rol: </strong>Desarrollador Web Independiente</p>
+                      <p><strong>Metodología: </strong>Agil</p>
+                      <p><strong>Tecnologías: </strong> React JS, Typescript, Tailwind CSS.</p>
+                      <p><strong>Descripción: </strong>
+                      Proximamente...</p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="React JS" src={React} />
+                        <Avatar alt="Javascript" src={Javascript} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </>
+              )}
+            </motion.div>
+          <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              {language === 'en' ? (
+              <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG6} className='w-[200px] h-[200px] object-cover  object-[top_right]' />
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Homepage: Finca Sagrado Corazón</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Role: </strong>Freelance Web Developer on demand (July 2025 - September 2025)</p>
+                      <p><strong>Methodology: </strong>Agile</p>
+                      <p><strong>Technologies: </strong>React JS, Typescript, Tailwind CSS.</p>
+                      <p><strong>Description: </strong>
+                        I designed and developed a homepage to Art Workshop: Finca sagrado corazón with responsive design and UX/UI.
+                      </p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="React JS" src={React} />
+                        <Avatar alt="Javascript" src={Javascript} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </>
+              ) : (
+                <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG6} className='w-[200px] h-[200px] object-cover  object-[top_right]'/>
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Homepage : Finca Sagrado Corazon</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Rol: </strong>Desarrollador Web Independiente por encargo (Julio 2025 - Septiembre 2025)</p>
+                      <p><strong>Metodología: </strong>Agil</p>
+                      <p><strong>Tecnologías: </strong> React JS, Typescript, Tailwind CSS.</p>
+                      <p><strong>Descripción: </strong>
+                      Diseñé y desarrollé una Homepage para el Taller de arte: Finca sagrado corazón con diseño responsive y UX/UI.</p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="React JS" src={React} />
+                        <Avatar alt="Javascript" src={Javascript} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </>
+              )}
+            </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
