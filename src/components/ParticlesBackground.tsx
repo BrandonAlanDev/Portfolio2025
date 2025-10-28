@@ -4,7 +4,7 @@ const ParticlesBackground = () => {
   const isMobile = window.innerWidth < 768;
   const particleCount = isMobile ? 100 : 400;
   return (
-    <div className="absolute w-[100vw] h-full z-0">
+    <div className="absolute w-full h-full z-0">
       <ParticlesBg
         type="cobweb"
         bg={true}

@@ -28,6 +28,7 @@ import ProyectIMG3 from './assets/img/projects/Proyect3.png'
 import ProyectIMG4 from './assets/img/projects/Proyect4.png'
 import ProyectIMG5 from './assets/img/projects/Proyect5.png'
 import ProyectIMG6 from './assets/img/projects/Proyect6.png'
+import ProyectIMG7 from './assets/img/projects/Proyect7.png'
 import * as THREE from 'three'
 
 const Section = ({ id, title, children, dark }: { id: string, title: string, children: React.ReactNode, dark: boolean }) => {
@@ -90,8 +91,6 @@ const ThreeTorus = ({ estilo = "", srcModel }: ThreeTorusProps) => (
   <div 
     className={`relative ${estilo}`}
     style={{
-      minWidth: 250,
-      minHeight: 250,
       width: '100%',
       height: '100%',
       overflow: 'hidden'
@@ -177,10 +176,10 @@ const App = () => {
   },[language])
 
   return (
-    <div className="bg-white text-black align-middle justify-center items-center">
+    <div className="bg-white text-black align-middle justify-center items-center max-w-full overflow-hidden">
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} language={language} setLanguage={setLanguage}/>
       
-      <section id="home" className="relative w-[100vw] min-h-screen h-auto flex flex-col items-center justify-center align-middle select-none gap-5 pt-[70px] pb-2">
+      <section id="home" className="relative w-[100vw] min-h-screen h-auto flex flex-col items-center justify-center align-middle select-none gap-5 pt-[70px] pb-2 overflow-hidden">
         <ParticlesBackground />
         <div className="inset-0 flex flex-col lg:flex-row items-center justify-evenly text-left min-h-[75vh] min-w-[100vw] sm:min-w-[90vw] md:min-w-[80vw] max-w-[100vw] bg-linear-to-br from-black to-gray-800 rounded-2xl p-4 gap-5 mx-auto">
           <div className="text-center z-10">
@@ -229,7 +228,7 @@ const App = () => {
             </motion.p>
             </div>
         </div>
-        <div className="relative inset-0 flex items-center justify-center w-full h-[8vh] overflow-hidden bg-gradient-to-tr from-gray-400 to-transparent rounded-2xl px-4">
+        <div className="relative inset-0 flex items-center justify-center w-full h-[8vh] overflow-hidden bg-gradient-to-tr from-gray-400 to-transparent px-4">
           <div className="absolute flex animate-infinite-slide gap-8 whitespace-nowrap">
           {[...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
             <img
@@ -245,37 +244,51 @@ const App = () => {
 
       <Section id="about" title={titles[2]} dark={true}>
         <div className='flex flex-col lg:flex-row justify-between p-4 gap-5 items-center'>
-          <p className="text-gray-200 text-xl font-bold shadow-white leading-relaxed flex-col text-left">
+          <p className="lg:w-[50%] text-gray-200 text-xl font-bold shadow-white leading-relaxed flex-col text-left">
             {language === 'en' ? (
               <>
-                <div>👋 Hi! I'm Brandon Alan Carabajal, a software developer passionate about technology and innovation.</div>
-                <div>I'm 25 years old and from Mar del Plata - Argentina 🌊</div>
-                <div>Since 2021, I've been dedicated to creating digital solutions using multiple tools and programming languages.</div>
-                <div>In 2022, I started the Systems Analyst program at Instituto Argentino de la Empresa (HILET) and graduated in December 2024.</div>
-                <div className='my-4' />
-                <div className='text-2xl mb-2'>💡 What defines me?</div>
-                <div>✔️ Full Stack experience: I develop apps with .NET, React, and SQL.</div>
-                <div>✔️ Main languages: C#, JavaScript, and Java.</div>
-                <div>✔️ Teamwork: I use agile methodologies like SCRUM, Git, and management tools like Trello.</div>
-                <div>✔️ Lifelong learner: Always looking for new challenges and ways to improve my skills.</div>
-                <div className='my-4' />
-                <div>🚀 My goal is to be part of dynamic development teams, contribute with efficient solutions, and continue growing professionally in the software world.</div>
-              </>
+                <div className='mb-8'>👋 Hi! I’m Brandon Alan Carabajal, a Full Stack Software Developer deeply passionate about technology, innovation, and continuous learning.
+I’m 25 years old and based in Mar del Plata, Argentina 🌊, where since 2021 I’ve been transforming ideas into functional, scalable, and purpose-driven digital solutions.</div>
+                <div className='mb-8'>🎓 In 2022, I began studying Systems Analysis at the Instituto Argentino de la Empresa (HILET) and graduated in December 2024.
+During this journey, I refined my focus on modern development — combining React + TypeScript on the frontend and .NET (C#) on the backend to build robust, secure, and well-structured applications.</div>
+                <div className='mb-1'>
+                  💡 What defines me as a developer:
+                </div>
+                <div className='mb-1'>
+                  ⚙️ Full Stack Development: I design, build, and maintain applications using technologies such as React, TypeScript, .NET, and SQL.
+                </div>
+                <div className='mb-1'>
+                  🚀 Scalable Architectures: I’m passionate about building clean, modular, and scalable systems by applying best practices, design patterns, REST APIs, and connected ecosystems.
+                </div>
+                <div className='mb-1'>
+                  🔥 Continuous Learning: I’m always looking for new challenges that push me to grow and master emerging technologies.
+                </div>
+                <div className='mb-1'>
+                  🎯 My Goal: To be part of dynamic teams where I can contribute value, optimize processes, and continue evolving as a professional in the world of software.
+                </div>
+                </>
             ) : (
               <>
-                <div>👋 ¡Hola! Soy Brandon Alan Carabajal, un desarrollador de software apasionado por la tecnología y la innovación.</div>
-                <div>Tengo 25 años y soy de Mar del Plata - Argentina 🌊</div>
-                <div>Desde 2021 me he dedicado a crear soluciones digitales utilizando múltiples herramientas y lenguajes de programación.</div>
-                <div>En 2022 inicié la carrera de Analista de Sistemas en el Instituto Argentino de la Empresa (HILET), y me gradué en diciembre de 2024.</div>
-                <div className='my-4' />
-                <div className='text-2xl mb-2'>💡 ¿Qué me define?</div>
-                <div>✔️ Experiencia Full Stack: Desarrollo aplicaciones con .NET, React y SQL.</div>
-                <div>✔️ Lenguajes principales: C#, JavaScript y Java.</div>
-                <div>✔️ Trabajo en equipo: Uso metodologías ágiles como SCRUM, Git y herramientas de gestión como Trello.</div>
-                <div>✔️ Mentalidad de aprendizaje continuo: Siempre en busca de nuevos desafíos y oportunidades para mejorar mis habilidades.</div>
-                <div className='my-4' />
-                <div>🚀 Mi objetivo es formar parte de equipos de desarrollo dinámicos, contribuir con soluciones eficientes y seguir creciendo profesionalmente en el mundo del software.</div>
-              </>
+                <div className='mb-8'>👋 ¡Hola! Soy Brandon Alan Carabajal, un desarrollador de software Full Stack con una profunda pasión por la tecnología, la innovación y el aprendizaje continuo.
+Tengo 25 años y soy de Mar del Plata, Argentina 🌊, donde desde 2021 transformo ideas en soluciones digitales funcionales, escalables y con propósito.</div>
+                <div className='mb-8'>🎓 En 2022 comencé la carrera de Analista de Sistemas en el Instituto Argentino de la Empresa (HILET), graduándome en diciembre de 2024.
+Durante este recorrido, perfeccioné mi enfoque en el desarrollo moderno, combinando React + TypeScript para el frontend y .NET (C#) para el backend, creando aplicaciones robustas, seguras y bien estructuradas.</div>
+                <div className='mb-1'>
+                  💡 ¿Qué me define como desarrollador?
+                </div>
+                <div className='mb-1'>
+                  ⚙️ Desarrollo Full Stack: Diseño, construyo y mantengo aplicaciones utilizando tecnologías como React, TypeScript, .NET y SQL.
+                </div>
+                <div className='mb-1'>
+                  🚀 Arquitecturas escalables: Me apasiona construir sistemas limpios, modulares y preparados para crecer, aplicando buenas prácticas, patrones de diseño, APIs REST y ecosistemas conectados.
+                </div>
+                <div className='mb-1'>
+                  🔥 Aprendizaje continuo: Siempre busco nuevos desafíos que me impulsen a crecer y a dominar las últimas tendencias tecnológicas.
+                </div>
+                <div className='mb-1'>
+                  🎯 Mi objetivo: Ser parte de equipos dinámicos donde pueda aportar valor, optimizar procesos y seguir evolucionando como profesional en el mundo del software.
+                </div>
+                </>
             )}
           </p>
           <div>
@@ -340,6 +353,63 @@ const App = () => {
                 </>
               )}
             </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              {language === 'en' ? (
+              <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG7} className='w-[200px] h-[200px] object-cover object-center' />
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Drawing board Online</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Role: </strong>Freelance Web Developer (October 2025)</p>
+                      <p><strong>Technologies: </strong>React JS, Typescript, Tailwind CSS.</p>
+                      <p><strong>Description: </strong>
+                        I designed and developed a Web app that allows draw in the web.
+                      </p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="React JS" src={React} />
+                        <Avatar alt="Javascript" src={Javascript} />
+                      </div>
+                      <a href="https://pizarraonline.vercel.app/" className='rounded-full border-white border-2 p-1' target='_blank'>
+                        Page
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                </>
+              ) : (
+                <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG7} className='w-[200px] h-[200px] object-cover object-center'/>
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Pizarra Online</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Rol: </strong>Desarrollador Web Independiente (Octubre 2025)</p>
+                      <p><strong>Tecnologías: </strong> React JS, Typescript, Tailwind CSS.</p>
+                      <p><strong>Descripción: </strong>
+                      Diseñe y desarrolle una Web app que permite dibujar desde la web.</p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="React JS" src={React} />
+                        <Avatar alt="Javascript" src={Javascript} />
+                      </div>
+                      <a href="https://pizarraonline.vercel.app/" className='rounded-full border-white border-2 p-1' target='_blank'>
+                        Página
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                </>
+              )}
+            </motion.div>
           <motion.div 
               whileHover={{ scale: 1.05 }}
               className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
@@ -364,6 +434,9 @@ const App = () => {
                         <Avatar alt="React JS" src={React} />
                         <Avatar alt="Javascript" src={Javascript} />
                       </div>
+                      <a href="https://fincasagradocorazon.vercel.app/" className='rounded-full border-white border-2 p-1' target='_blank'>
+                        Page
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -388,7 +461,7 @@ const App = () => {
                         <Avatar alt="Javascript" src={Javascript} />
                       </div>
                       <a href="https://fincasagradocorazon.vercel.app/" className='rounded-full border-white border-2 p-1' target='_blank'>
-                        Page
+                        Página
                       </a>
                     </div>
                   </div>
