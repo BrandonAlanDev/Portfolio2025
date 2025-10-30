@@ -29,6 +29,7 @@ import ProyectIMG4 from './assets/img/projects/Proyect4.png'
 import ProyectIMG5 from './assets/img/projects/Proyect5.png'
 import ProyectIMG6 from './assets/img/projects/Proyect6.png'
 import ProyectIMG7 from './assets/img/projects/Proyect7.png'
+import ProyectIMG8 from './assets/img/projects/Proyect8.png'
 import * as THREE from 'three'
 
 const Section = ({ id, title, children, dark }: { id: string, title: string, children: React.ReactNode, dark: boolean }) => {
@@ -347,6 +348,63 @@ Durante este recorrido, perfeccioné mi enfoque en el desarrollo moderno, combin
                         <Avatar alt="React JS" src={React} />
                         <Avatar alt="Javascript" src={Javascript} />
                       </div>
+                    </div>
+                  </div>
+                </div>
+                </>
+              )}
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[80vw] lg:-[65vw] bg-black text-white rounded-2xl p-6 hover:shadow-xl transition-shadow border-2 hover:border-gray-500 hover:bg-gradient-to-tr hover:from-black hover:to-gray-500 z-40"
+            >
+              {language === 'en' ? (
+              <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG8} className='w-[200px] h-[200px] object-cover object-center' />
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Cuánto Sale?</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Role: </strong>Freelance Web Developer (November 2025)</p>
+                      <p><strong>Technologies: </strong>React JS, Typescript, Tailwind CSS, React Router 7.</p>
+                      <p><strong>Description: </strong>
+                        I designed and developed a web application that displays real-time exchange rates of various currencies relative to the Argentine peso.
+                      </p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="React JS" src={React} />
+                        <Avatar alt="Javascript" src={Javascript} />
+                      </div>
+                      <a href="https://cuantosale.vercel.app/" className='rounded-full border-white border-2 p-1' target='_blank'>
+                        Page
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                </>
+              ) : (
+                <>
+                <div className='flex flex-col md:flex-row items-center gap-8'>
+                  <img src={ProyectIMG8} className='w-[200px] h-[200px] object-cover object-center'/>
+                  <div className='items-center w-full'>
+                    <h3 className="text-xl font-bold mb-4">Cuánto Sale?</h3>
+                    <div className='flex flex-col'>
+                      <p><strong>Rol: </strong>Desarrollador Web Independiente (Noviembre 2025)</p>
+                      <p><strong>Tecnologías: </strong> React JS, Typescript, Tailwind CSS, React Router 7.</p>
+                      <p><strong>Descripción: </strong>
+                      Diseñé y desarrollé una aplicación web que muestra en tiempo real las tasas de cambio de varias monedas en relación con el peso argentino.</p>
+                    </div>
+                    <hr className='my-2' />
+                    <div className="flex flex-wrap w-full items-end justify-between gap-4">
+                      <div className='flex flex-row gap-5'>
+                        <Avatar alt="React JS" src={React} />
+                        <Avatar alt="Javascript" src={Javascript} />
+                      </div>
+                      <a href="https://cuantosale.vercel.app/" className='rounded-full border-white border-2 p-1' target='_blank'>
+                        Página
+                      </a>
                     </div>
                   </div>
                 </div>
